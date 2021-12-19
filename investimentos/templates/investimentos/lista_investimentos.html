@@ -1,0 +1,23 @@
+{% extends 'investimentos/base.html' %}
+
+{% block title%}
+{{investimento.nome_investimento}}
+{% endblock %}
+
+{%block content%}
+<div class="card text-white bg-dark mb-3">
+    <div class="card-header">
+        <h4>Dados do investimento</h4>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Investimento: {{investimento.nome_investimento}}</h5>
+        <h5 class="card-title">Valor: {{investimento.valor}}</h5>
+        <h5 class="card-title">Fonte: {{investimento.fonte}}</h5>
+        <h5 class="card-title">Data: {{investimento.data}}</h5>
+        <h5 class="card-title">Lucro mensal: {{investimento.lucro_mensal}}</h5>
+        <h5 class="card-title">Lucro anual: {{investimento.lucro_anual}}</h5>
+        <a class="btn btn-primary" href="{% url 'listar_investimentos' %}">Voltar</a>
+    </div>
+</div>
+
+{% endblock %}

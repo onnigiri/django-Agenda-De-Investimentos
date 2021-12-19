@@ -1,0 +1,38 @@
+{% extends 'investimentos/base.html' %}
+
+{% block title%}
+    lista dos investimentos
+{% endblock %}
+
+{%block content%}
+    <table class="table table-light table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Investimento</th>
+                <th>Valor</th>
+                <th>Fonte</th>
+                <th>Data</th>
+                <th>Lucro mensal</th>
+                <th>Lucro anual</th>
+                <th>Ações</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for investimento in investimentos %}
+            <tr>
+                <td><a href="{%url 'listar_investimento_id' investimento.id%}">{{investimento.nome_investimento}}</a></td>
+                <td>{{investimento.valor}}</td>
+                <td>{{investimento.fonte}}</td>
+                <td>{{investimento.data}}</td>
+                <td>{{investimento.lucro_mensal}}</td>
+                <td>{{investimento.lucro_anual}}</td>
+                <td><a href="{% url 'editar_investimento' investimento.id%}" class="btn btn-outline-primary">Editar</a></td>
+                <td><a href="{% url 'remover_investimento' investimento.id%}" class="btn btn-outline-danger">Remover</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'cadastrar_investimentos' %}"><button class="btn btn-primary">Cadastrar</button></a>
+{% endblock %}
